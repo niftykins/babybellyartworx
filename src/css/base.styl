@@ -1,0 +1,173 @@
+@import "normalize.css"
+
+// $light = #f7eee7
+// $medium = #894f3a
+// $dark = #4b413b
+// $link = #f5ba61
+
+$light = #EDE7F7
+$medium = #683A89
+$dark = #433B4B
+$link = #BE61F5
+
+$clearfix()
+	zoom 1
+
+	&:before
+	&:after
+		content ''
+		display table
+
+	&:after
+		clear both
+
+$sizing(n)
+	$width = (100% / 3) - (1.15 * 2)
+
+	width $width
+	margin-left 1.15%
+	margin-right 1.15%
+
+
+*
+	box-sizing border-box
+
+body
+	font-family 'Open Sans', sans-serif
+	background-color $light
+
+a
+	color $link
+	text-decoration none
+
+section
+	position relative
+	max-width 800px
+	padding-left 28px
+	padding-right 28px
+	margin auto
+	text-align center
+
+	&:before
+		position absolute
+		content ''
+		top 0
+		bottom 0
+		width 100vw
+		transform translateX(-50%)
+		left 50%
+		z-index -1
+
+.intro
+	padding-top 28px
+	padding-bottom 55px
+
+	.logo
+		max-height 306px
+
+	h1
+		font-size 28px
+		line-height 40px
+		color $medium
+		margin 54px 0 0 0
+
+	h2
+		font-weight normal
+		font-size 18px
+		line-height 32px
+		// color #924f34
+		color $medium
+
+.primary-content
+	padding-top 90px
+	padding-bottom 90px
+	color $light
+
+	&:before
+		background-color $dark
+
+	h2
+		font-weight normal
+		font-size 36px
+		margin-top 0
+
+	& > p
+		margin-top 10px
+		margin-bottom 0
+		font-size 18px
+		line-height 30px
+
+		border-bottom 2px solid #362824
+		padding-bottom 28px
+
+	.item
+		$clearfix()
+		margin-top 45px
+		text-align left
+
+		&.right img
+			float right
+			margin-left 50px
+			margin-right 0
+
+		img
+			float left
+			margin-right 50px
+			width 245px
+			height @width
+
+		h3
+			font-size 24px
+			padding-top 50px
+			margin-top 19.5px
+			margin-bottom 6.5px
+
+		p
+			font-size 14px
+
+.steps-content
+	color $dark
+
+	a
+		// color #e26937
+		color $link - 30%
+
+	h4
+		margin-top 50px
+		margin-bottom 6.5px
+		font-size 36px
+		line-height 46px
+
+	h5
+		font-size 18px
+		line-height 30px
+		font-weight normal
+		margin-top 10px
+		margin-bottom 6.5px
+
+	.steps
+		$clearfix()
+		margin-bottom 50px
+
+	.step
+		$sizing(3)
+		float left
+		display block
+
+		img
+			width 146px
+			height @width
+			margin 50px auto 0
+
+		h6
+			font-size 24px
+			margin-top 19.5px
+			margin-bottom 6.5px
+
+		p
+			margin 0
+			font-size 14px
+			line-height 21px
+
+		a
+			font-weight bold
