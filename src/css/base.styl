@@ -1,4 +1,5 @@
 @import "normalize.css"
+@import "lightbox.css"
 
 // $light = #f7eee7
 // $medium = #894f3a
@@ -8,7 +9,11 @@
 $light = #EDE7F7
 $medium = #683A89
 $dark = #433B4B
+
 $link = #BE61F5
+$linkDark = $link - 30%
+
+$borderRadius = 4px
 
 $clearfix()
 	zoom 1
@@ -22,12 +27,27 @@ $clearfix()
 		clear both
 
 $sizing(n)
-	$width = (100% / 3) - (1.15 * 2)
+	$width = (100% / n) - (1.15 * 2)
 
 	width $width
 	margin-left 1.15%
 	margin-right 1.15%
 
+$lightContent($mediumHeadings = false)
+	color $dark
+
+	h1, h2, h3, h4, h5, h6
+		color $mediumHeadings ? $medium : $dark
+
+	a
+		color $linkDark
+
+$darkContent()
+	color $light
+	background-color $dark
+
+	a
+		color $link
 
 *
 	box-sizing border-box
@@ -37,57 +57,64 @@ body
 	background-color $light
 
 a
-	color $link
 	text-decoration none
 
 section
 	position relative
-	max-width 800px
 	padding-left 28px
 	padding-right 28px
-	margin auto
 	text-align center
 
-	&:before
-		position absolute
-		content ''
-		top 0
-		bottom 0
-		width 100vw
-		transform translateX(-50%)
-		left 50%
-		z-index -1
+	.container
+		max-width 800px
+		margin auto
+		overflow auto
 
 .intro
+	$lightContent(true)
 	padding-top 28px
-	padding-bottom 55px
+	padding-bottom 50px
 
 	.logo
 		max-height 306px
+		max-width 100%
 
 	h1
-		font-size 28px
-		line-height 40px
-		color $medium
-		margin 54px 0 0 0
+		font-size 45px
+		margin 16px 0 0
 
 	h2
 		font-weight normal
 		font-size 18px
 		line-height 32px
-		// color #924f34
-		color $medium
 
-.primary-content
-	padding-top 90px
+.gallery
+	$lightContent()
+	padding-top 50px
 	padding-bottom 90px
-	color $light
-
-	&:before
-		background-color $dark
 
 	h2
-		font-weight normal
+		font-size 36px
+		margin-top 0
+
+	.images
+		// controls gap between images
+		font-size 30px
+
+		img
+			width 245px
+			height @width
+			border-radius $borderRadius
+			background-size cover
+			background-position center
+			background-repeat no-repeat
+
+.how-content
+	$darkContent()
+	padding-top 50px
+	padding-bottom 90px
+
+	h2
 		font-size 36px
 		margin-top 0
 
@@ -114,7 +141,8 @@ section
 			float left
 			margin-right 50px
 			width 245px
-			height @width
+			height auto
+			border-radius $borderRadius
 
 		h3
 			font-size 24px
@@ -125,15 +153,24 @@ section
 		p
 			font-size 14px
 
-.steps-content
-	color $dark
+		@media screen and (max-width 800px)
+			text-align center
 
-	a
-		// color #e26937
-		color $link - 30%
+			img
+				display block
+				float none !important
+				margin 20px auto 0 !important
+
+			h3
+				padding-top 0
+
+.steps-content
+	$darkContent()
+	padding-top 50px
+	padding-bottom 50px
 
 	h4
-		margin-top 50px
+		margin-top 0
 		margin-bottom 6.5px
 		font-size 36px
 		line-height 46px
@@ -147,17 +184,23 @@ section
 
 	.steps
 		$clearfix()
-		margin-bottom 50px
 
 	.step
-		$sizing(3)
+		$sizing(4)
 		float left
 		display block
+
+		@media screen and (max-width 700px)
+			$sizing(2)
+
+		@media screen and (max-width 500px)
+			$sizing(1)
 
 		img
 			width 146px
 			height @width
 			margin 50px auto 0
+			border-radius $borderRadius
 
 		h6
 			font-size 24px
@@ -171,3 +214,54 @@ section
 
 		a
 			font-weight bold
+
+.contact
+	$lightContent()
+	padding-top 50px
+	padding-bottom 50px
+
+	h4
+		margin-top 0
+		margin-bottom 6.5px
+		font-size 36px
+		line-height 46px
+
+	h5
+		font-size 18px
+		line-height 30px
+		font-weight normal
+		margin-top 10px
+		margin-bottom 6.5px
+
+	form
+		text-align center
+		margin-top 30px
+
+		input
+			display block
+			margin 0 auto
+			width 300px
+			border 1px solid $dark
+			outline 0
+			margin-bottom 10px
+			font-family 'Open Sans', sans-serif
+			background-color rgba(255, 255, 255, 0.75)
+			border-radius $borderRadius
+
+			&:last-child
+				margin-bottom 0
+
+			&:not([type="submit"])
+				padding 10px 12px
+
+			&[type="submit"]
+				line-height 35px
+				text-align center
+				background-color $medium
+				color $light
+				font-weight bold
+				font-size 14px
+				cursor pointer
+
+				&:hover
+					background-color $medium + 10%
