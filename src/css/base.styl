@@ -15,6 +15,20 @@ $linkDark = $link - 30%
 
 $borderRadius = 4px
 
+@font-face {
+  font-family: 'Varela Round';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Varela-Round-regular/Varela-Round-regular.eot');
+  src: url('../fonts/Varela-Round-regular/Varela-Round-regular.eot?#iefix') format('embedded-opentype'),
+       local('Varela Round'),
+       local('Varela-Round-regular'),
+       url('../fonts/Varela-Round-regular/Varela-Round-regular.woff2') format('woff2'),
+       url('../fonts/Varela-Round-regular/Varela-Round-regular.woff') format('woff'),
+       url('../fonts/Varela-Round-regular/Varela-Round-regular.ttf') format('truetype'),
+       url('.../fonts/Varela-Round-regular/Varela-Round-regular.svg#VarelaRound') format('svg');
+}
+
 $clearfix()
 	zoom 1
 
@@ -25,6 +39,10 @@ $clearfix()
 
 	&:after
 		clear both
+
+$fancyfont()
+	font-family 'Varela Round', 'Open Sans', sans-serif
+	font-weight 400 !important
 
 $sizing(n)
 	$width = (100% / n) - (1.15 * 2)
@@ -80,7 +98,8 @@ section
 		max-width 100%
 
 	h1
-		font-size 45px
+		$fancyfont()
+		font-size 65px
 		margin 16px 0 0
 
 	h2
@@ -94,6 +113,7 @@ section
 	padding-bottom 90px
 
 	h2
+		$fancyfont()
 		font-size 36px
 		margin-top 0
 
@@ -102,7 +122,7 @@ section
 		font-size 30px
 
 		img
-			width 245px
+			width 175px
 			height @width
 			border-radius $borderRadius
 			background-size cover
@@ -115,6 +135,7 @@ section
 	padding-bottom 90px
 
 	h2
+		$fancyfont()
 		font-size 36px
 		margin-top 0
 
@@ -146,9 +167,12 @@ section
 
 		h3
 			font-size 24px
-			padding-top 50px
+			padding-top 10px
 			margin-top 19.5px
 			margin-bottom 6.5px
+
+			&.padded
+				padding-top 50px
 
 		p
 			font-size 14px
@@ -170,6 +194,7 @@ section
 	padding-bottom 50px
 
 	h4
+		$fancyfont()
 		margin-top 0
 		margin-bottom 6.5px
 		font-size 36px
@@ -221,6 +246,7 @@ section
 	padding-bottom 50px
 
 	h4
+		$fancyfont()
 		margin-top 0
 		margin-bottom 6.5px
 		font-size 36px
@@ -235,13 +261,35 @@ section
 
 	form
 		text-align center
-		margin-top 30px
+		width 100%
+		max-width 300px
+		margin 20px auto 0
 
-		input
+		.result
+			display none
+			margin-bottom 10px
+			border-radius $borderRadius
+			padding 10px 12px
+			color #fff
+
+			&.success
+			&.error
+				display block
+
+			&.success
+				background-color #81c784
+
+			&.error
+				background-color #f44336
+
+		textarea
+			resize vertical
+			min-height 100px
+
+		input, textarea
 			display block
-			margin 0 auto
-			width 300px
 			border 1px solid $dark
+			width 100%
 			outline 0
 			margin-bottom 10px
 			font-family 'Open Sans', sans-serif
@@ -265,3 +313,7 @@ section
 
 				&:hover
 					background-color $medium + 10%
+
+				&.sending
+					cursor initial
+					background-color grey
