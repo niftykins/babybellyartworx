@@ -404,6 +404,13 @@ body.lb-disable-scrolling {
   opacity: 1;
 }
 
+@font-face {
+  font-family: 'Varela Round';
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/Varela-Round-regular/Varela-Round-regular.eot");
+  src: url("../fonts/Varela-Round-regular/Varela-Round-regular.eot?#iefix") format('embedded-opentype'), local('Varela Round'), local('Varela-Round-regular'), url("../fonts/Varela-Round-regular/Varela-Round-regular.woff2") format('woff2'), url("../fonts/Varela-Round-regular/Varela-Round-regular.woff") format('woff'), url("../fonts/Varela-Round-regular/Varela-Round-regular.ttf") format('truetype'), url(".../fonts/Varela-Round-regular/Varela-Round-regular.svg#VarelaRound") format('svg');
+}
 * {
   box-sizing: border-box;
 }
@@ -446,7 +453,9 @@ section .container {
   max-width: 100%;
 }
 .intro h1 {
-  font-size: 45px;
+  font-family: 'Varela Round', 'Open Sans', sans-serif;
+  font-weight: 400 !important;
+  font-size: 65px;
   margin: 16px 0 0;
 }
 .intro h2 {
@@ -471,6 +480,8 @@ section .container {
   color: #930ee1;
 }
 .gallery h2 {
+  font-family: 'Varela Round', 'Open Sans', sans-serif;
+  font-weight: 400 !important;
   font-size: 36px;
   margin-top: 0;
 }
@@ -478,8 +489,8 @@ section .container {
   font-size: 30px;
 }
 .gallery .images img {
-  width: 245px;
-  height: 245px;
+  width: 175px;
+  height: 175px;
   border-radius: 4px;
   background-size: cover;
   background-position: center;
@@ -495,6 +506,8 @@ section .container {
   color: #be61f5;
 }
 .how-content h2 {
+  font-family: 'Varela Round', 'Open Sans', sans-serif;
+  font-weight: 400 !important;
   font-size: 36px;
   margin-top: 0;
 }
@@ -533,9 +546,12 @@ section .container {
 }
 .how-content .item h3 {
   font-size: 24px;
-  padding-top: 50px;
+  padding-top: 10px;
   margin-top: 19.5px;
   margin-bottom: 6.5px;
+}
+.how-content .item h3.padded {
+  padding-top: 50px;
 }
 .how-content .item p {
   font-size: 14px;
@@ -563,6 +579,8 @@ section .container {
   color: #be61f5;
 }
 .steps-content h4 {
+  font-family: 'Varela Round', 'Open Sans', sans-serif;
+  font-weight: 400 !important;
   margin-top: 0;
   margin-bottom: 6.5px;
   font-size: 36px;
@@ -643,6 +661,8 @@ section .container {
   color: #930ee1;
 }
 .contact h4 {
+  font-family: 'Varela Round', 'Open Sans', sans-serif;
+  font-weight: 400 !important;
   margin-top: 0;
   margin-bottom: 6.5px;
   font-size: 36px;
@@ -657,26 +677,52 @@ section .container {
 }
 .contact form {
   text-align: center;
-  margin-top: 30px;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto 0;
 }
-.contact form input {
+.contact form .result {
+  display: none;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: #fff;
+}
+.contact form .result.success,
+.contact form .result.error {
   display: block;
-  margin: 0 auto;
-  width: 300px;
+}
+.contact form .result.success {
+  background-color: #81c784;
+}
+.contact form .result.error {
+  background-color: #f44336;
+}
+.contact form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.contact form input,
+.contact form textarea {
+  display: block;
   border: 1px solid #433b4b;
+  width: 100%;
   outline: 0;
   margin-bottom: 10px;
   font-family: 'Open Sans', sans-serif;
   background-color: rgba(255,255,255,0.75);
   border-radius: 4px;
 }
-.contact form input:last-child {
+.contact form input:last-child,
+.contact form textarea:last-child {
   margin-bottom: 0;
 }
-.contact form input:not([type="submit"]) {
+.contact form input:not([type="submit"]),
+.contact form textarea:not([type="submit"]) {
   padding: 10px 12px;
 }
-.contact form input[type="submit"] {
+.contact form input[type="submit"],
+.contact form textarea[type="submit"] {
   line-height: 35px;
   text-align: center;
   background-color: #683a89;
@@ -685,6 +731,12 @@ section .container {
   font-size: 14px;
   cursor: pointer;
 }
-.contact form input[type="submit"]:hover {
+.contact form input[type="submit"]:hover,
+.contact form textarea[type="submit"]:hover {
   background-color: #79439f;
+}
+.contact form input[type="submit"].sending,
+.contact form textarea[type="submit"].sending {
+  cursor: initial;
+  background-color: #808080;
 }
