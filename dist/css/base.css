@@ -488,7 +488,8 @@ section .container {
 .gallery .images {
   font-size: 30px;
 }
-.gallery .images img {
+.gallery .images span {
+  display: inline-block;
   width: 175px;
   height: 175px;
   border-radius: 4px;
